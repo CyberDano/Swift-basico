@@ -1,4 +1,4 @@
-func CaracteresEspeciales(name: String) -> Bool {
+/*func CaracteresEspeciales(name: String) -> Bool {
     /*for char in name {
         if char.isSymbol {
             return true
@@ -37,3 +37,5 @@ repeat {
 } while incorrecto
 
 print("Hola", name)
+*/
+Average()
