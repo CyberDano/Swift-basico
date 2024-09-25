@@ -1,3 +1,3 @@
 # Repositorio de ejercicios realizados en Swift en MACinCloud
-El archivo `Ejercicios` contiene actividades realizadas desde el día 25/09/2024
-El archivo `Main` contiene direcciones hacia los diferentes archivos de código.
+The archive `Ejercicios` contains activities made since 25/09/2024
+The archive `Main` contains method calls to the different code archives.
