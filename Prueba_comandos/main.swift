@@ -1,9 +1,4 @@
 /*func CaracteresEspeciales(name: String) -> Bool {
-    /*for char in name {
-        if char.isSymbol {
-            return true
-        }
-    }*/
     let especiales = "¡¿!?@#¢$/()+-*.,:;{}[]"
     for char in name {
         for especial in especiales {
@@ -38,4 +33,5 @@ repeat {
 
 print("Hola", name)
 */
-Average()
+//Average()
+Roulet()
