@@ -1,3 +1,4 @@
+import Foundation
 //  Ejercicios.swift
 //  Prueba_comandos
 //
@@ -106,4 +107,68 @@ func Correct(number: String) -> Bool {
         }
     }
     return true
+}
+/*
+ Ejercicio 3: Ejercicio 1 con métodos
+ */
+func AverageWithMethod() {
+    var lista = [Float] ()
+    print("Vamos a hacer una media entre cinco valores")
+    for n in 0...4 {
+        while lista.count <= n {
+            print("Dime el valor " + String(n+1) + ":")
+            let number = readLine()!
+            if NumberFormat(input: number) {
+                lista.append(Float(number)!)
+            }
+        }
+    }
+    AverageResult(lista: lista)
+}
+
+func AverageResult(lista : Array<Float>) {
+    let result = Float((lista[0] + lista[1] + lista[2] + lista[3] + lista[4])/5)
+    print("La media de estos números es: " + String(result))
+}
+
+func NumberFormat(input: String) -> Bool {
+    if input.isEmpty {
+        print("Valor no introducido.")
+        return false
+    } else {
+        if input.contains(",") {
+            print("Formato decimal no válido. Prueba otra vez.")
+            return false
+        } else {
+            for n in input {
+                if n.isLetter || n.isSymbol {
+                    print("No acepto ni letras ni símbolos. Prueba otra vez.")
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+    }
+    return true
+}
+
+/*
+ Ejercicio 4: Pedir una frase y censurar palabras clave
+ */
+func CensoredWords() {
+    /*print("Escribe una reseña:")
+    let sentence = readLine()!
+    if !sentence.isEmpty {
+        Validator(text: sentence)
+    }*/
+    Validator(text: "Jesús esto es una pera madura")
+}
+func Validator(text: String) {
+    let words = text.split(separator: " ")
+    var name = ""
+    for n in words {
+        name += n + " "
+    }
+    print(name)
 }

@@ -33,5 +33,9 @@ repeat {
 
 print("Hola", name)
 */
+
+/* Llamada a ejercicios */
 //Average()
-Roulet()
+//Roulet()
+//AverageWithMethod()
+CensoredWords()
