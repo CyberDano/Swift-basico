@@ -35,7 +35,7 @@ func Average() {
     print("La media de estos números es: " + String(result))
 }
 /*
- Juego de la ruleta rusa
+ Ejercicio 2: Juego de la ruleta rusa
  */
 func Roulet() {
     print("Vamos a jugar a la ruleta rusa.")
@@ -44,13 +44,19 @@ func Roulet() {
         colt.append(i)
     }
     while colt.count >= 1 {
-        print("Selecciona un número:")
-        print("Números disponibles:", colt)
         var playerInt = 0
         // Jugador
         while playerInt == 0 {
+            print("Selecciona una posición del tambor.")
+            print("Números disponibles:", colt)
             let player_number = readLine()!
-            
+            if Correct(number: player_number) {
+                if Int(player_number)! > colt.count {
+                    print("Posición del tambor no disponible.")
+                } else {
+                    playerInt = Int(player_number)!
+                }
+            }
         }
         let bullet = Int.random(in: 1...colt.count) // posición de la bala
         let cpu = Int.random(in: 1...colt.count) // Jugador 2
