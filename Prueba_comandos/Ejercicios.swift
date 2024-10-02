@@ -209,29 +209,28 @@ func ContainsLetter(word: Character) -> Bool {
  Ejercicio 5: Traductor de números romanos a decimal sin restas
  */
 func RomanicInts() {
-    let numbers = [
-        1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX", 10: "X",
-        50: "L", 100: "C", 500: "D", 1000: "M"
-    ]
     print("Escribe un número romano y te diré cuánto vale:")
     var input = readLine()!
-    if !input.isEmpty {
-        input = input.uppercased()
-        for i in numbers {
-            if input == i.value {
-                print("Tu número, en decimal, sería " + String(i.key) + ".")
-                break
-            }
-            else {
-                print("No parece que sea un número romano sencillo. Prueba otra vez.")
-                RomanicInts()
-            }
+    input = input.uppercased()
+    let decimalNumber = RomanToDecimal(input)
+    print("El número \(input) equivale a \(decimalNumber) en decimal.")
+ }
+func RomanToDecimal(_ roman: String) -> Int {
+    let romanNumerals: [Character: Int] = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
+    var result = 0
+    var prevValue = 0
+    for char in roman.reversed() {
+        let value = romanNumerals[char]!
+        if value < prevValue {
+            result -= value
+        } else {
+            result += value
         }
-    } else {
-        print("Escribe un número.")
-        RomanicInts()
+        prevValue = value
     }
+    return result
 }
+
 /*
  Ejercicio 6: Traductor de números romanos a decimal con restas
  */
