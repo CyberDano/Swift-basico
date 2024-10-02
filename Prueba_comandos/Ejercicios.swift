@@ -157,7 +157,7 @@ func NumberFormat(input: String) -> Bool {
  Ejercicio 4: Pedir una frase y censurar palabras clave
  */
 func CensoredWords() {
-    /*print("Escribe una reseña:")
+    /*print("Escribe algo:")
     let sentence = readLine()!
     if !sentence.isEmpty {
         Validator(text: sentence)
@@ -165,10 +165,40 @@ func CensoredWords() {
     Validator(text: "Jesús esto es una pera madura")
 }
 func Validator(text: String) {
-    let words = text.split(separator: " ")
-    var name = ""
-    for n in words {
-        name += n + " "
+    var words = text.components(separatedBy: " ")
+    for w in 0...words.count-1 {
+        var palabra = words[w]
+        let n: Character = palabra[palabra.startIndex]
+        if ContainsLetter(word: n) {
+            print("Hay una palabra sospechosa.")
+            var corrected = ""
+            corrected += String(palabra[palabra.startIndex])
+            for _ in 1...palabra.count-1 {
+                corrected += "*"
+            }
+            words[w] = corrected
+        }
     }
-    print(name)
+    var censored = ""
+    for w in 0...words.count-1 {
+        censored += words[w]
+        if w < words.count-1 {
+            censored += " "
+        } else {
+            censored += "."
+        }
+    }
+    print("He modificado el contenido.")
+    print("La frase ahora es:" + censored)
+}
+func ContainsLetter(word: Character) -> Bool {
+    if word == "J" || word == "j" {
+        return true
+    } else if word == "P" || word == "p" {
+        return true
+    } else if word == "M" || word == "m" {
+        return true
+    } else {
+        return false
+    }
 }
