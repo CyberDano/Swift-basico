@@ -205,3 +205,40 @@ func ContainsLetter(word: Character) -> Bool {
         return false
     }
 }
+/*
+ Ejercicio 5: Traductor de números romanos a decimal sin restas
+ */
+func RomanicInts() {
+    let numbers = [
+        1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX", 10: "X",
+        50: "L", 100: "C", 500: "D", 1000: "M"
+    ]
+    print("Escribe un número romano y te diré cuánto vale:")
+    var input = readLine()!
+    if !input.isEmpty {
+        input = input.uppercased()
+        for i in numbers {
+            if input == i.value {
+                print("Tu número, en decimal, sería " + String(i.key) + ".")
+                break
+            }
+            else {
+                print("No parece que sea un número romano sencillo. Prueba otra vez.")
+                RomanicInts()
+            }
+        }
+    } else {
+        print("Escribe un número.")
+        RomanicInts()
+    }
+}
+/*
+ Ejercicio 6: Traductor de números romanos a decimal con restas
+ */
+func RomanicTranslate() {
+    let numbers = [
+        1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX", 10: "X",
+        50: "L", 100: "C", 500: "D", 1000: "M"
+    ]
+}
+
