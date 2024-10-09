@@ -219,6 +219,9 @@ func RomanicInts() {
     let decimalNumber = RomanToDecimal(input, plus: true)
     print("El número \(input) equivale a \(decimalNumber) en decimal.")
  }
+/*
+Funci{on para traducir
+*/
 func RomanToDecimal(_ roman: String, plus: Bool) -> Int {
     let romanNumerals: [Character: Int] = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
     var result = 0
@@ -281,5 +284,6 @@ func ReduceAverage() {
 /*
 Ejercicio 7 (2/2): Hacer el ejercicio 4 usando map
 */
-
-
+func CensoredWithMap() {
+    
+}
