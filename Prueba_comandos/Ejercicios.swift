@@ -1,8 +1,9 @@
-import Foundation
 //  Ejercicios.swift
 //  Prueba_comandos
 //
 //  Created by Leonid Daniel Gómez Gómez on 25/09/2024.
+
+import Foundation
 
 /*
  Ejercicio 1: hacer media de cinco números
@@ -12,7 +13,7 @@ func Average() {
     print("Vamos a hacer una media entre cinco valores")
     for n in 0...4 {
         while lista.count <= n {
-            print("Dime el valor " + String(n+1) + ":")
+            print("Dime el valor \(n+1):")
             let number = readLine()!
             if number.isEmpty {
                 print("Valor no introducido.")
@@ -35,6 +36,7 @@ func Average() {
     let result = Float((lista[0] + lista[1] + lista[2] + lista[3] + lista[4])/5)
     print("La media de estos números es: " + String(result))
 }
+
 /*
  Ejercicio 2: Juego de la ruleta rusa
  */
@@ -108,6 +110,7 @@ func Correct(number: String) -> Bool {
     }
     return true
 }
+
 /*
  Ejercicio 3: Ejercicio 1 con métodos
  */
@@ -205,6 +208,7 @@ func ContainsLetter(word: Character) -> Bool {
         return false
     }
 }
+
 /*
  Ejercicio 5: Traductor de números romanos a decimal sin restas
  */
@@ -212,21 +216,28 @@ func RomanicInts() {
     print("Escribe un número romano y te diré cuánto vale:")
     var input = readLine()!
     input = input.uppercased()
-    let decimalNumber = RomanToDecimal(input)
+    let decimalNumber = RomanToDecimal(input, plus: true)
     print("El número \(input) equivale a \(decimalNumber) en decimal.")
  }
-func RomanToDecimal(_ roman: String) -> Int {
+func RomanToDecimal(_ roman: String, plus: Bool) -> Int {
     let romanNumerals: [Character: Int] = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
     var result = 0
-    var prevValue = 0
-    for char in roman.reversed() {
-        let value = romanNumerals[char]!
-        if value < prevValue {
-            result -= value
-        } else {
+    if plus {
+        for char in roman {
+            let value = romanNumerals[char]!
             result += value
         }
-        prevValue = value
+    } else {
+        var prevValue = 0
+        for char in roman.reversed() {
+            let value = romanNumerals[char]!
+            if value < prevValue {
+                result -= value
+            } else {
+                result += value
+            }
+            prevValue = value
+        }
     }
     return result
 }
@@ -235,9 +246,40 @@ func RomanToDecimal(_ roman: String) -> Int {
  Ejercicio 6: Traductor de números romanos a decimal con restas
  */
 func RomanicTranslate() {
-    let numbers = [
-        1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX", 10: "X",
-        50: "L", 100: "C", 500: "D", 1000: "M"
-    ]
+    print("Escribe un número romano y te diré cuánto vale:")
+    var input = readLine()!
+    input = input.uppercased()
+    let decimalNumber = RomanToDecimal(input, plus: false)
+    print("El número \(input) equivale a \(decimalNumber) en decimal.")
+ }
+    
+/*
+Ejercicio 7 (1/2): Hacer ejercicio 1 usando reduce
+*/
+func ReduceAverage() {
+    var lista: [Float] = []
+    print("Vamos a hacer una media entre cinco valores enteros.")
+    var i = 0
+    for _ in 0...4 {
+        i += 1
+        while true {
+            print("Dime el valor: \(i)")
+            guard let numberString = readLine(),
+            let number = Float(numberString),
+            numberString.contains(".") == false else {
+                print("Valor no válido.")
+                continue
+            }
+            lista.append(number)
+            break
+        }
+    }
+    let average = lista.reduce(0, +) / Float(lista.count)
+    print("La media de estos números es: \(average)")
 }
+
+/*
+Ejercicio 7 (2/2): Hacer el ejercicio 4 usando map
+*/
+
 
